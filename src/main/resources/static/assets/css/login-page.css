@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Create two unequal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 5px;
+  height: 750px;
+}
+
+.left {
+  width: 25%;
+  background-color: #16161799;
+  border-top-left-radius: 5px;
+}
+
+.right {
+  width: 60%;
+  background-color: #16161799;
+}
+.left1 {
+  width: 15%;
+  background-color: #161617;
+  border-top-right-radius: 5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.p-login{color:white;font-family: "Teko",sans-serif;font-size: 25px;margin-bottom: 60px;}
+
+.rightbar-lgpage{
+    text-align: center;
+    position: relative;
+    top: 130px;
+}
+
+
+
+.center-section{background-image:url(assets/img/gallery/blog1.png);padding-right: 200px;padding-top: 30px;padding-left: 100px;}
+
+.news-content{overflow:auto;width:100%;height: 95%;background-color: #ffffffe3;border-radius: 5px;}
+
+.news-center{background-color: #161617;color: white;border-radius: 5px;text-align:center;font-family:Teko,sans-serif;padding: 5px;}
+.btn-save-article{color:black;border-color: transparent;background-color: #ffffff00;font-family: 'Oswald',sans-serif;FONT-SIZE: 20px;margin-top: -3px;}
+
+.btn-save-article:hover{
+color:#007bff;
+transition: all .4s ease;
+}
+.a-button{
+    color: black;
+    border-color: transparent;
+    background-color: #ffffff00;
+    font-family: 'Oswald',sans-serif;
+    FONT-SIZE: 20px;
+    margin-top: -3px;
+}
+.a-button:hover{
+color:#007bff;
+transition: all .4s ease;
+}
+
+.menu-buttons:hover{
+	color:#007bff;
+	transition: all .4s ease;
+}
+.menu-buttons{background:transparent;border-color: transparent;}
+
+.submenu-buttons:hover{
+	color:#007bff;
+	transition: all .4s ease;
+}
+.submenu-buttons{background:transparent;border-color: transparent; color:black;}
+
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #1f2b37cc; 
+  border-radius: 10px;
+
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1f2b37cc; 
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #1f2b37cc; 
+
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  font-size: inherit;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 110px;
+  min-height:100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  opacity:90%;
+  border-radius:5px;
+  
+}
+
+.dropdown-content a {
+  color: black;
+  
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #293f56cc;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: transparent; color:#007bff;	transition: all .4s ease;}
+
+
+.blog-head{
+	color: #2d2d2d;
+	
+}
+.blog-head:hover{
+	color:#007bff;
+	transition: all .4s ease;
+	
+}

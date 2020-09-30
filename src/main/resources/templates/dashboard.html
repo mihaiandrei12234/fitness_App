@@ -1,0 +1,471 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <style>
+
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Title Page-->
+    <title>MyFitnessBuddy</title>
+
+
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+          rel="stylesheet">
+
+
+    <!-- Main CSS-->
+    <link href="css/main.css" rel="stylesheet" media="all">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/slicknav.css">
+    <link rel="stylesheet" href="/assets/css/gijgo.css">
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/animated-headline.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/assets/css/slick.css">
+    <link rel="stylesheet" href="/assets/css/nice-select.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/login-page.css">
+    <link rel="stylesheet" href="/assets/css/loginpage-slider.css">
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'></script>
+    <link href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+            <!--fadeout mesaj salvare articol-->
+            $("p.p-msg").fadeOut(4000);
+            $("p.p-msg1").fadeOut(4000);
+
+
+            <!--Se foloseste acelasi template pentru pagina de articole. Se inlocuieste continutul div-ului-->
+            $("#btnnews").click(function () {
+                $("div.save1").append($("div.blog_item_article1"));
+                $("div.save2").append($("div.blog_item_article2"));
+                $("div.save3").append($("div.blog_item_article3"));
+                $("div.news-content").empty();
+                $("div.news-content").append($("div.blog_item_article1"));
+                $("h2.news-center").replaceWith("<h2 class=\"news-center\">News Center</h2>");
+            });
+            $("#btnwork").click(function () {
+                $("div.save1").append($("div.blog_item_article1"));
+                $("div.save2").append($("div.blog_item_article2"));
+                $("div.save3").append($("div.blog_item_article3"));
+                $("div.news-content").empty();
+                $("div.news-content").append($("div.blog_item_article2"));
+
+                $("h2.news-center").replaceWith("<h2 class=\"news-center\">Workouts</h2>");
+            });
+
+            $("#btnnutri").click(function () {
+                $("div.save1").append($("div.blog_item_article1"));
+                $("div.save2").append($("div.blog_item_article2"));
+                $("div.save3").append($("div.blog_item_article3"));
+                $("div.news-content").empty();
+                $("div.news-content").append($("div.blog_item_article3"));
+
+                $("h2.news-center").replaceWith("<h2 class=\"news-center\">Nutrition</h2>");
+            });
+
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+<!--Div uri salvate pentru a putea pastra un singur template -->
+<div class="save0" hidden>
+    <div th:each="article : ${article}" class="blog_item_article" style="display:block;">
+        <div class="blog_item_img">
+            <img class="card-img rounded-0"
+                 th:attr="src=@{|assets/img/articles/${article.photoFile}|}"
+                 alt="">
+        </div>
+        <div class="blog_details">
+            <a class="d-inline-block">
+                <h2 class="blog-head" th:text="${article.title}"></h2>
+            </a>
+            <p class="para" th:text="${article.description}"></p>
+            <ul class="blog-info-link">
+                <li>
+                    <form action="/article">
+                        <input hidden name="option" value=1>
+                        <input hidden name="id" th:value="${article.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                        <button class="a-button">READ MORE</button>
+                    </form>
+                    <form action="/save-article" method="post">
+                        <button class="btn-save-article"
+                                style="position: relative;top: -33px;left: 110px;">Save Article
+                        </button>
+                        <input hidden name="title" th:value="${article.title}">
+                        <input hidden name="content" th:value="${article.content}">
+                        <input hidden name="description" th:value="${article.description}">
+                        <input hidden name="photoFile" th:value="${article.photoFile}">
+                        <input hidden name="category_id" th:value="${article.category_id}">
+                        <input hidden name="user_id" th:value="${user.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Div uri salvate pentru a putea pastra un singur template -->
+<div class="save1" hidden>
+    <div th:each="article : ${articleN}" class="blog_item_article1">
+        <div class="blog_item_img">
+            <img class="card-img rounded-0"
+                 th:attr="src=@{|assets/img/articles/${article.photoFile}|}"
+                 alt="">
+        </div>
+        <div class="blog_details">
+            <a class="d-inline-block">
+                <h2 class="blog-head" th:text="${article.title}"></h2>
+            </a>
+            <p class="para" th:text="${article.description}"></p>
+            <ul class="blog-info-link">
+                <li>
+                    <form action="/article">
+                        <input hidden name="option" value=1>
+                        <input hidden name="id" th:value="${article.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                        <button class="a-button">READ MORE</button>
+                    </form>
+                    <form action="/save-article" method="post">
+                        <button class="btn-save-article" style="position: relative;top: -33px;left: 110px;">Save
+                            Article
+                        </button>
+                        <input hidden name="title" th:value="${article.title}">
+                        <input hidden name="content" th:value="${article.content}">
+                        <input hidden name="description" th:value="${article.description}">
+                        <input hidden name="photoFile" th:value="${article.photoFile}">
+                        <input hidden name="category_id" th:value="${article.category_id}">
+                        <input hidden name="user_id" th:value="${user.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Div uri salvate pentru a putea pastra un singur template -->
+<div class="save2" hidden>
+    <div th:each="article : ${articleW}" class="blog_item_article2">
+        <div class="blog_item_img">
+            <img class="card-img rounded-0"
+                 th:attr="src=@{|assets/img/articles/${article.photoFile}|}"
+                 alt="">
+        </div>
+        <div class="blog_details">
+            <a class="d-inline-block">
+                <h2 class="blog-head" th:text="${article.title}"></h2>
+            </a>
+            <p class="para" th:text="${article.description}"></p>
+            <ul class="blog-info-link">
+                <li>
+                    <form action="/article">
+                        <input hidden name="option" value=1>
+                        <input hidden name="id" th:value="${article.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                        <button class="a-button">READ MORE</button>
+                    </form>
+                    <form action="/save-article" method="post">
+                        <button class="btn-save-article" style="position: relative;top: -33px;left: 110px;">Save
+                            Article
+                        </button>
+                        <input hidden name="title" th:value="${article.title}">
+                        <input hidden name="content" th:value="${article.content}">
+                        <input hidden name="description" th:value="${article.description}">
+                        <input hidden name="photoFile" th:value="${article.photoFile}">
+                        <input hidden name="category_id" th:value="${article.category_id}">
+                        <input hidden name="user_id" th:value="${user.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--Div uri salvate pentru a putea pastra un singur template -->
+<div class="save3" hidden>
+    <div th:each="article : ${articleNu}" class="blog_item_article3">
+        <div class="blog_item_img">
+            <img class="card-img rounded-0"
+                 th:attr="src=@{|assets/img/articles/${article.photoFile}|}"
+                 alt="">
+        </div>
+        <div class="blog_details">
+            <a class="d-inline-block">
+                <h2 class="blog-head" th:text="${article.title}"></h2>
+            </a>
+            <p class="para" th:text="${article.description}"></p>
+            <ul class="blog-info-link">
+                <li>
+                    <form action="/article">
+                        <input hidden name="option" value=1>
+                        <input hidden name="id" th:value="${article.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                        <button class="a-button">READ MORE</button>
+                    </form>
+                    <form action="/save-article" method="post">
+                        <button class="btn-save-article" style="position: relative;top: -33px;left: 110px;">Save
+                            Article
+                        </button>
+                        <input hidden name="title" th:value="${article.title}">
+                        <input hidden name="content" th:value="${article.content}">
+                        <input hidden name="description" th:value="${article.description}">
+                        <input hidden name="photoFile" th:value="${article.photoFile}">
+                        <input hidden name="category_id" th:value="${article.category_id}">
+                        <input hidden name="user_id" th:value="${user.id}">
+                        <input hidden name="email" th:value="${user.email}">
+                        <input hidden name="code" th:value="${user.password}">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- ? Preloader Start -->
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="/assets/img/logo/loder.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Preloader Start -->
+<header>
+    <!--? Header Start -->
+    <div class="header-area header-transparent" style="color:black">
+        <div class="main-header header-sticky">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <!-- Logo -->
+                    <div class="col-xl-2 col-lg-2 col-md-1">
+                        <div class="logo">
+                            <img src="/assets/img/logo/logobuddy.png"
+                                 style="width: 260px;height: 180px; margin-left:-20px; margin-top:-10px">
+                        </div>
+                    </div>
+                    <div id="22" class="col-xl-10 col-lg-10 col-md-10">
+                        <div class="menu-main d-flex align-items-center justify-content-end">
+                            <!-- Main-menu -->
+                            <div class="main-menu f-right d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a style="font-size:50px;padding:15px" th:text="${user.name}"></a>
+                                            <form action="/logout" method="post" style="padding:15px">
+                                                <button class="btn hero-btn" data-animation="fadeInLeft"
+                                                        data-delay="0.8s;"
+                                                        style="border-radius:5px;padding: 18px;top: -40px;float:right">
+                                                    Logout
+                                                </button>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+<main>
+    <!--? Hero Start -->
+    <div class="slider-area2" style="height:100px">
+        <div class="slider-height2 d-flex align-items-center">
+        </div>
+    </div>
+    <!-- Hero End -->
+
+
+    <!--? Contact form Start -->
+    <div class="center-section" style="background-image:url(/assets/img/gallery/blog5.png)">
+        <div class="row">
+            <div class="column left">
+                <div class="slider">
+                </div>
+            </div>
+            <div class="column right">
+                <h2 class="news-center">News Center
+                    <!--Mesaje salvare articol -->
+                    <p class="p-msg" th:text="${message}"
+                       style="position: relative;top: 5px;color: #137cd0;font-family: 'Teko', sans-serif;font-size: 23px;"></p>
+                    <p class="p-msg1" th:text="${message1}"
+                       style="position: relative;top: 5px;color: #137cd0;font-family: 'Teko', sans-serif;font-size: 23px;"></p>
+
+                </h2>
+
+                <!--div-ul care isi schimba continutul pt a pastra template-ul -->
+                <div class="news-content">
+                    <div th:each="article : ${article}" class="blog_item_article" style="display:block;">
+                        <div class="blog_item_img">
+                            <img class="card-img rounded-0"
+                                 th:attr="src=@{|assets/img/articles/${article.photoFile}|}"
+                                 alt="">
+                        </div>
+                        <div class="blog_details">
+                            <a class="d-inline-block">
+                                <h2 class="blog-head" th:text="${article.title}"></h2>
+                            </a>
+                            <p class="para" th:text="${article.description}"></p>
+                            <ul class="blog-info-link">
+                                <li>
+                                    <form action="/article">
+                                        <input hidden name="option" value=1>
+                                        <input hidden name="id" th:value="${article.id}">
+                                        <input hidden name="email" th:value="${user.email}">
+                                        <input hidden name="code" th:value="${user.password}">
+                                        <button class="a-button">READ MORE</button>
+                                    </form>
+                                    <form action="/save-article" method="post">
+                                        <button class="btn-save-article"
+                                                style="position: relative;top: -33px;left: 110px;">Save Article
+                                        </button>
+                                        <input hidden name="id" th:value="${article.id}">
+                                        <input hidden name="title" th:value="${article.title}">
+                                        <input hidden name="content" th:value="${article.content}">
+                                        <input hidden name="description" th:value="${article.description}">
+                                        <input hidden name="photoFile" th:value="${article.photoFile}">
+                                        <input hidden name="category_id" th:value="${article.category_id}">
+                                        <input hidden name="user_id" th:value="${user.id}">
+                                        <input hidden name="email" th:value="${user.email}">
+                                        <input hidden name="code" th:value="${user.password}">
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column left1">
+                <div class="rightbar-lgpage">
+                    <div class="p-login">
+                        <button id="btnnews" class="menu-buttons">Home</button>
+                    </div>
+                    <div class="p-login">
+                        <button id="btnwork" class="menu-buttons">Workouts</button>
+                    </div>
+                    <div class="p-login">
+                        <button id="btnnutri" class="menu-buttons">Nutrition</button>
+                    </div>
+                    <div class="p-login">
+                        <div class="dropdown">
+                            <button class="dropbtn">Personal Archive</button>
+                            <div class="dropdown-content">
+                                <form action="/personal-archive">
+                                    <input hidden name="categ_id" value="1">
+                                    <input hidden name="user_id" th:value="${user.id}">
+                                    <input hidden name="email" th:value="${user.email}">
+                                    <button class="submenu-buttons">News</button>
+                                </form>
+                                <form action="/personal-archive">
+                                    <input hidden name="categ_id" value="2">
+                                    <input hidden name="user_id" th:value="${user.id}">
+                                    <input hidden name="email" th:value="${user.email}">
+                                    <button class="submenu-buttons">Workout</button>
+                                </form>
+                                <form action="/personal-archive">
+                                    <input hidden name="categ_id" value="3">
+                                    <input hidden name="user_id" th:value="${user.id}">
+                                    <input hidden name="email" th:value="${user.email}">
+                                    <button class="submenu-buttons">Nutrition</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Contact form End -->
+
+</main>
+<section class="wantToWork-area w-padding section-bg" data-background="assets/img/gallery/section_bg02.png"
+         style="height:150px"></section>
+
+
+<!-- JS here -->
+
+<script src="/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<!-- Jquery, Popper, Bootstrap -->
+<script src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<!-- Jquery Mobile Menu -->
+<script src="/assets/js/jquery.slicknav.min.js"></script>
+
+<!-- Jquery Slick , Owl-Carousel Plugins -->
+<script src="/assets/js/owl.carousel.min.js"></script>
+<script src="/assets/js/slick.min.js"></script>
+<!-- One Page, Animated-HeadLin -->
+<script src="/assets/js/wow.min.js"></script>
+<script src="/assets/js/animated.headline.js"></script>
+<script src="/assets/js/jquery.magnific-popup.js"></script>
+
+<!-- Date Picker -->
+<script src="/assets/js/gijgo.min.js"></script>
+<!-- Nice-select, sticky -->
+<script src="/assets/js/jquery.nice-select.min.js"></script>
+<script src="/assets/js/jquery.sticky.js"></script>
+
+<!-- counter , waypoint -->
+<script src="/assets/js/jquery.counterup.min.js"></script>
+<script src="/assets/js/waypoints.min.js"></script>
+<script src="/assets/js/jquery.countdown.min.js"></script>
+<script src="/assets/js/hover-direction-snake.min.js"></script>
+
+<!-- contact js -->
+<script src="/assets/js/contact.js"></script>
+<script src="/assets/js/jquery.form.js"></script>
+<script src="/assets/js/jquery.validate.min.js"></script>
+<script src="/assets/js/mail-script.js"></script>
+<script src="/assets/js/jquery.ajaxchimp.min.js"></script>
+
+<!-- Jquery Plugins, main Jquery -->
+<script src="/assets/js/plugins.js"></script>
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

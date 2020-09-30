@@ -1,0 +1,12 @@
+.left-column {
+    float: left;
+    border: 1px;
+    width: 40%;
+    padding-left: 20px;
+}
+
+.right-column {
+    float: left;
+    width: 60%;
+    display: block;
+}
